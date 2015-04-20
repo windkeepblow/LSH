@@ -1,6 +1,6 @@
 from lsh import LSH
 
-model = LSH(3, 2, 2)
+model = LSH(base_vec_num=3, iter_num=2, dimens=2)
 vec_dict = {
     "a":[0.1,0.2],
     "b":[0.5,-0.2],
