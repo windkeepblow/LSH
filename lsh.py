@@ -6,16 +6,13 @@ import sys
 import math
 
 class LSH:
-    _dimens = 0 #输入向量的维度 
-    _base_vec_li = [] #基向量, 每个元素是一组基向量
-    _hash_bucket_li = [] #hash桶, 每个元素是一组hash桶
-    _base_vec_num = 0 #基向量的数量
-    _iter_num = 0 #进行多少轮的lsh操作
-
     def __init__(self, base_vec_num, iter_num, dimens):
-        self._base_vec_num = base_vec_num
-        self._iter_num = iter_num
-        self._dimens = dimens
+        self._base_vec_num = base_vec_num #基向量的数量
+        self._iter_num = iter_num #进行多少轮的lsh操作
+        self._dimens = dimens #输入向量的维度 
+    
+        self._base_vec_li = [] #基向量, 每个元素是一组基向量
+        self._hash_bucket_li = [] #hash桶, 每个元素是一组hash桶
 
     def build_lsh(self, vec_dict):
         sys.stderr.write("building base_vecs...\n")
@@ -67,4 +64,6 @@ class LSH:
         hit = sum([(d1[i]*d2[i]) for i in range(len(d1))]) + 0.0
         sum1 = math.sqrt(sum([d1[k]*d1[k] for k in range(len(d1))]))
         sum2 = math.sqrt(sum([d2[k]*d2[k] for k in range(len(d2))]))
+        if sum1 == 0 or sum2 == 0:
+            return 0.0
         return hit / (sum1 * sum2)

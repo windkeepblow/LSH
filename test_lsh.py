@@ -1,4 +1,5 @@
 from lsh import LSH
+import cPickle as pickle
 
 model = LSH(base_vec_num=3, iter_num=2, dimens=2)
 vec_dict = {
@@ -13,3 +14,13 @@ model.build_lsh(vec_dict)
 for name in model.get_candidate_set([0.3,0.9]):
     print name,
 print ""
+
+with open("model.pkl", 'wb') as fout:
+    pickle.dump(model, fout)
+
+with open("model.pkl", 'rb') as fin:
+    dumped_model = pickle.load(fin)
+    print "dumped model:"
+    for name in dumped_model.get_candidate_set([0.3,0.9]):
+        print name,
+    print ""
