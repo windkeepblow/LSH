@@ -1,6 +1,6 @@
 LSH
 --------------------------
-* To accerlerate the vector query use Locality-Sensitive Hashing.
+* To accerlerate similar vector querying using Locality-Sensitive Hashing.
 * For cosine similarity.
 * See `test_lsh.py`.
 
