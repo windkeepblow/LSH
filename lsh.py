@@ -7,8 +7,8 @@ import math
 
 class LSH:
     def __init__(self, base_vec_num, iter_num, dimens):
-        self._base_vec_num = base_vec_num #基向量的数量
-        self._iter_num = iter_num #进行多少轮的lsh操作
+        self._base_vec_num = base_vec_num #基向量的数量, 空间切分的区间数量 = 2^(self._base_vec_num)
+        self._iter_num = iter_num #进行多少轮的lsh操作, 避免误杀
         self._dimens = dimens #输入向量的维度 
     
         self._base_vec_li = [] #基向量, 每个元素是一组基向量
